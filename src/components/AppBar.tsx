@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   AppBar,
@@ -8,6 +9,9 @@ import {
 } from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { Menu as MenuIcon, Search as SearchIcon } from '@material-ui/icons';
+import clsx from 'clsx';
+
+const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,18 +69,46 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     backgroundColor: '#222E50',
   },
+  hide: {
+    display: 'none',
+  },
+  appBar: {
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
 }));
 
-export default function SearchAppBar() {
+interface props {
+  handleDrawerOpen: () => void;
+  open: boolean;
+}
+
+const SearchAppBar: React.FC<props> = ({ handleDrawerOpen, open }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar
+        position="fixed"
+        className={clsx(classes.appBar, {
+          [classes.appBarShift]: open,
+        })}
+      >
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
-            className={classes.menuButton}
+            className={clsx(classes.menuButton, open && classes.hide)}
+            onClick={handleDrawerOpen}
             color="inherit"
             aria-label="open drawer"
           >
@@ -102,4 +134,6 @@ export default function SearchAppBar() {
       </AppBar>
     </div>
   );
-}
+};
+
+export default SearchAppBar;
