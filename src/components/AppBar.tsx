@@ -8,15 +8,16 @@ import {
   InputBase,
 } from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { Menu as MenuIcon, Search as SearchIcon } from '@material-ui/icons';
+import {
+  Menu as MenuIcon,
+  Search as SearchIcon,
+  Home,
+} from '@material-ui/icons';
 import clsx from 'clsx';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -67,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   toolbar: {
-    backgroundColor: '#222E50',
+    backgroundColor: '#007991',
   },
   hide: {
     display: 'none',
@@ -97,42 +98,42 @@ const SearchAppBar: React.FC<props> = ({ handleDrawerOpen, open }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-            onClick={handleDrawerOpen}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
+    <AppBar
+      position="fixed"
+      className={clsx(classes.appBar, {
+        [classes.appBarShift]: open,
+      })}
+    >
+      <Toolbar className={classes.toolbar}>
+        <IconButton
+          edge="start"
+          className={clsx(classes.menuButton, open && classes.hide)}
+          onClick={handleDrawerOpen}
+          color="inherit"
+          aria-label="open drawer"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography className={classes.title} variant="h6" noWrap>
+          <IconButton color="inherit">
+            <Home />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Data Structures
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
+        </Typography>
+        <div className={classes.search}>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
           </div>
-        </Toolbar>
-      </AppBar>
-    </div>
+          <InputBase
+            placeholder="Search…"
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 };
 
