@@ -47,6 +47,15 @@ const Algorithms = () => {
       <Typography variant="h4" align="center" gutterBottom>
         Every Algorithm must satisfy the following properties:
       </Typography>
+
+      <Typography align="center" gutterBottom>
+        An algorithm is a finite set of instructions or logic written in order
+        to accomplish a certain predefined task. An algorithm is not the
+        complete code or program, it is just the core solution of a problem,
+        which can be expressed either as an informal high level description as
+        pseudocode or using a flowchart.
+      </Typography>
+
       <div className="section group">
         <div className={toggleGrid(width)}>
           <Input />
@@ -64,7 +73,6 @@ const Algorithms = () => {
           <Finite />
         </div>
       </div>
-
       <div className="section group">
         <div className={toggleFinite(FiniteIDs.two, width)}>
           <Finite />
