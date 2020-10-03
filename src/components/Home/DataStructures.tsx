@@ -13,6 +13,8 @@ export default function DataStructures() {
     as possible."
       image="background-2462431_640.jpg"
       imageCaption="An amazing abstract image"
+      share={false}
+      learnMore={false}
     />
   );
 }

@@ -24,6 +24,9 @@ interface props {
   body: string;
   image: string;
   imageCaption: string;
+  share: boolean;
+  learnMore: boolean;
+  onClickLearnMore?: () => void;
 }
 
 const DataCard: React.FC<props> = ({
@@ -32,6 +35,9 @@ const DataCard: React.FC<props> = ({
   body,
   image,
   imageCaption,
+  share,
+  learnMore,
+  onClickLearnMore,
 }) => {
   const classes = useStyles();
 
@@ -55,13 +61,18 @@ const DataCard: React.FC<props> = ({
           </Typography>
         </CardContent>
       </CardActionArea>
+
       <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+        {share && (
+          <Button size="small" color="primary">
+            Share
+          </Button>
+        )}
+        {learnMore && (
+          <Button size="small" color="primary" onClick={onClickLearnMore}>
+            Learn More
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

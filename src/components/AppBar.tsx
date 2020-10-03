@@ -91,10 +91,15 @@ const useStyles = makeStyles((theme) => ({
 
 interface props {
   handleDrawerOpen: () => void;
+  handleGoHome: () => void;
   open: boolean;
 }
 
-const SearchAppBar: React.FC<props> = ({ handleDrawerOpen, open }) => {
+const SearchAppBar: React.FC<props> = ({
+  handleDrawerOpen,
+  open,
+  handleGoHome,
+}) => {
   const classes = useStyles();
 
   return (
@@ -115,7 +120,7 @@ const SearchAppBar: React.FC<props> = ({ handleDrawerOpen, open }) => {
           <MenuIcon />
         </IconButton>
         <Typography className={classes.title} variant="h6" noWrap>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={handleGoHome}>
             <Home />
           </IconButton>
         </Typography>

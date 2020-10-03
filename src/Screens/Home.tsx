@@ -1,14 +1,18 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import DataStructures from './Home/DataStructures';
-import Algorithms from './Home/Algorithms';
-import WhyBother from './Home/WhyBother';
-import Purpose from './Home/Purpose';
+import DataStructures from '../components/Home/DataStructures';
+import Algorithms from '../components/Home/Algorithms';
+import WhyBother from '../components/Home/WhyBother';
+import Purpose from '../components/Home/Purpose';
 
-import './Grid.css';
-import { drawerWidth } from './Drawer';
+import '../styles/Grid.css';
+import { drawerWidth } from '../components/Drawer';
+import { Setpage } from '../types';
 
-interface props {}
+interface props {
+  setPage: Setpage;
+}
 
 // eslint-disable-next-line no-shadow
 enum PurposeIDs {
@@ -16,7 +20,7 @@ enum PurposeIDs {
   two = 'two',
 }
 
-const Home: React.FC<props> = () => {
+const Home: React.FC<props> = ({ setPage }) => {
   const [width, setWidth] = useState(window.innerWidth);
 
   const toggleGrid = (w: number) =>
@@ -49,7 +53,7 @@ const Home: React.FC<props> = () => {
         </div>
 
         <div className={toggleGrid(width)}>
-          <Algorithms />
+          <Algorithms setpage={setPage} />
         </div>
 
         <div className={toggleGrid(width)}>
@@ -61,10 +65,8 @@ const Home: React.FC<props> = () => {
         </div>
       </div>
 
-      <div>
-        <div className={togglePurpose(PurposeIDs.two, width)} id="purpose-2">
-          <Purpose />
-        </div>
+      <div className={togglePurpose(PurposeIDs.two, width)} id="purpose-2">
+        <Purpose />
       </div>
     </div>
   );

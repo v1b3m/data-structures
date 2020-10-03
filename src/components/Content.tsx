@@ -3,11 +3,14 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { drawerWidth } from './Drawer';
-import Home from './Home';
+import Home from '../Screens/Home';
+import Algorithms from '../Screens/Algorithms';
+import { Setpage, screens } from '../types';
 
 interface props {
   open: boolean;
-  page: 'home';
+  page: screens;
+  setPage: Setpage;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -37,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Content: React.FC<props> = ({ open, page }) => {
+const Content: React.FC<props> = ({ open, page, setPage }) => {
   const classes = useStyles();
 
   return (
@@ -47,7 +50,8 @@ const Content: React.FC<props> = ({ open, page }) => {
       })}
     >
       <div className={classes.drawerHeader} />
-      {page === 'home' && <Home />}
+      {page === screens.Home && <Home setPage={setPage} />}
+      {page === screens.Algorithms && <Algorithms />}
     </main>
   );
 };

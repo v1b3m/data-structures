@@ -12,6 +12,8 @@ export default function WhyBother() {
       already."
       image="question-mark-3255140_640.jpg"
       imageCaption="question mark?"
+      share={false}
+      learnMore={false}
     />
   );
 }
