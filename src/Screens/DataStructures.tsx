@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Typography } from '@material-ui/core';
 
 import Arrays from '../components/DataStructures/Arrays';
@@ -25,7 +25,7 @@ enum QueueIDs {
 }
 
 const DataStructures: React.FC<props> = ({ setPage }) => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width] = useState(window.innerWidth);
 
   const toggleGrid = (w: number) =>
     w - drawerWidth >= 1300 ? 'col span_1_of_4' : 'col span_1_of_3';
