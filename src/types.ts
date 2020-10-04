@@ -4,6 +4,7 @@ export enum screens {
   Home = 'Home',
   Algorithms = 'Algorithms',
   DataStructures = 'DataStructures',
+  Stacks = 'Stacks',
 }
 
 export type Setpage = (page: screens) => void;

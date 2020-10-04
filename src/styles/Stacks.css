@@ -1,0 +1,30 @@
+.container {
+  background-color: aqua;
+}
+
+.top {
+  background-color: beige;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+}
+
+.push {
+  display: flex;
+}
+
+.control-item {
+  margin: 5px 0 5px 0;
+}
+
+.live-view {
+  background-color: bisque;
+  padding: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
