@@ -14,6 +14,7 @@ import {
   Home,
 } from '@material-ui/icons';
 import clsx from 'clsx';
+import { drawerType } from '../types';
 
 const drawerWidth = 240;
 
@@ -93,12 +94,14 @@ interface props {
   handleDrawerOpen: () => void;
   handleGoHome: () => void;
   open: boolean;
+  drawerVariant: drawerType;
 }
 
 const SearchAppBar: React.FC<props> = ({
   handleDrawerOpen,
   open,
   handleGoHome,
+  drawerVariant,
 }) => {
   const classes = useStyles();
 
@@ -106,7 +109,7 @@ const SearchAppBar: React.FC<props> = ({
     <AppBar
       position="fixed"
       className={clsx(classes.appBar, {
-        [classes.appBarShift]: open,
+        [classes.appBarShift]: open && drawerVariant === drawerType.persistent,
       })}
     >
       <Toolbar className={classes.toolbar}>

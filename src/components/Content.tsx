@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { drawerWidth } from './Drawer';
 import Home from '../Screens/Home';
 import Algorithms from '../Screens/Algorithms';
-import { Setpage, screens } from '../types';
+import { Setpage, screens, drawerType } from '../types';
 import DataStructures from '../Screens/DataStructures';
 import Stacks from '../Screens/Stacks';
 import Queues from '../Screens/Queues';
@@ -16,6 +16,7 @@ interface props {
   open: boolean;
   page: screens;
   setPage: Setpage;
+  drawerVariant: drawerType;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -43,15 +44,20 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
+  smallScreenContent: {
+    padding: theme.spacing(3),
+  },
 }));
 
-const Content: React.FC<props> = ({ open, page, setPage }) => {
+const Content: React.FC<props> = ({ open, page, setPage, drawerVariant }) => {
   const classes = useStyles();
 
   return (
     <main
-      className={clsx(classes.content, {
-        [classes.contentShift]: open,
+      className={clsx({
+        [classes.contentShift]: open && drawerVariant === drawerType.persistent,
+        [classes.content]: drawerVariant === drawerType.persistent,
+        [classes.smallScreenContent]: drawerVariant === drawerType.temporary,
       })}
     >
       <div className={classes.drawerHeader} />

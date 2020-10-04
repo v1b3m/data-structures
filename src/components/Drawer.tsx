@@ -1,28 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import {
-  List,
-  Divider,
-  Drawer,
-  IconButton,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@material-ui/core';
+import { Divider, Drawer, IconButton } from '@material-ui/core';
 import {
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
-  GitHub,
-  Info,
-  Timeline,
-  AccountTree,
-  List as Lists,
-  ListAlt,
-  LowPriority,
-  HorizontalSplit,
-  Repeat,
 } from '@material-ui/icons';
+import { screens, Setpage, drawerType } from '../types';
+import DrawerList from './DrawerList';
 
 export const drawerWidth = 240;
 
@@ -47,16 +32,27 @@ const useStyles = makeStyles((theme) => ({
 interface props {
   handleDrawerClose: () => void;
   open: boolean;
+  setPage: Setpage;
+  selected: screens;
+  variant: drawerType;
+  closeDrawer: () => void;
 }
 
-const PersistentDrawerLeft: React.FC<props> = ({ handleDrawerClose, open }) => {
+const PersistentDrawerLeft: React.FC<props> = ({
+  handleDrawerClose,
+  open,
+  setPage,
+  selected,
+  variant,
+  closeDrawer,
+}) => {
   const classes = useStyles();
   const theme = useTheme();
 
   return (
     <Drawer
       className={classes.drawer}
-      variant="persistent"
+      variant={variant}
       anchor="left"
       open={open}
       classes={{
@@ -75,74 +71,11 @@ const PersistentDrawerLeft: React.FC<props> = ({ handleDrawerClose, open }) => {
 
       <Divider />
 
-      <List>
-        <ListItem button key="Recursion">
-          <ListItemIcon>
-            <Repeat />
-          </ListItemIcon>
-          <ListItemText primary="Recursion" />
-        </ListItem>
-
-        <ListItem button key="Stacks">
-          <ListItemIcon>
-            <HorizontalSplit />
-          </ListItemIcon>
-          <ListItemText primary="Stacks" />
-        </ListItem>
-
-        <ListItem button key="Queues">
-          <ListItemIcon>
-            <LowPriority />
-          </ListItemIcon>
-          <ListItemText primary="Queues" />
-        </ListItem>
-
-        <ListItem button key="Lists">
-          <ListItemIcon>
-            <Lists />
-          </ListItemIcon>
-          <ListItemText primary="Lists" />
-        </ListItem>
-
-        <ListItem button key="Arrays">
-          <ListItemIcon>
-            <ListAlt />
-          </ListItemIcon>
-          <ListItemText primary="Arrays" />
-        </ListItem>
-
-        <ListItem button key="Trees">
-          <ListItemIcon>
-            <AccountTree />
-          </ListItemIcon>
-          <ListItemText primary="Trees" />
-        </ListItem>
-
-        <ListItem button key="Graphs">
-          <ListItemIcon>
-            <Timeline />
-          </ListItemIcon>
-          <ListItemText primary="Graphs" />
-        </ListItem>
-      </List>
-
-      <Divider />
-
-      <List>
-        <ListItem button key="GitHub">
-          <ListItemIcon>
-            <GitHub />
-          </ListItemIcon>
-          <ListItemText primary="GitHub" />
-        </ListItem>
-
-        <ListItem button key="About us">
-          <ListItemIcon>
-            <Info />
-          </ListItemIcon>
-          <ListItemText primary="About us" />
-        </ListItem>
-      </List>
+      <DrawerList
+        selected={selected}
+        setPage={setPage}
+        closeDrawer={closeDrawer}
+      />
     </Drawer>
   );
 };
