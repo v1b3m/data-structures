@@ -11,8 +11,6 @@ export default function Purpose() {
       applications and need of algorithms and data structures."
       image="black-1072366_640.jpg"
       imageCaption="blank black board"
-      share={false}
-      learnMore={false}
     />
   );
 }

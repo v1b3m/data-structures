@@ -44,11 +44,11 @@ const Algorithms = () => {
 
   return (
     <div>
-      <Typography variant="h4" align="center" gutterBottom>
+      <Typography variant="h4" gutterBottom color="textSecondary">
         Every Algorithm must satisfy the following properties:
       </Typography>
 
-      <Typography align="center" gutterBottom>
+      <Typography gutterBottom>
         An algorithm is a finite set of instructions or logic written in order
         to accomplish a certain predefined task. An algorithm is not the
         complete code or program, it is just the core solution of a problem,

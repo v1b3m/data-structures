@@ -4,10 +4,10 @@ import { Setpage, screens } from '../../types';
 import Card from '../Card';
 
 interface props {
-  setpage: Setpage;
+  setPage: Setpage;
 }
 
-const Algorithms: React.FC<props> = ({ setpage }) => (
+const Algorithms: React.FC<props> = ({ setPage }) => (
   <Card
     title="What about algorithms?"
     caption="These are algos with rythm."
@@ -17,9 +17,9 @@ const Algorithms: React.FC<props> = ({ setpage }) => (
       mathmaticians such as the Euclids Algorithm."
     image="neo-urban-1808082_640.jpg"
     imageCaption="code on a laptop"
-    share={false}
-    learnMore
-    onClickLearnMore={() => setpage(screens.Algorithms)}
+    moreInfo
+    moreInfoText="LEARN MORE"
+    onClickMoreInfo={() => setPage(screens.Algorithms)}
   />
 );
 
