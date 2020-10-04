@@ -8,8 +8,6 @@ const Output = () => (
     body="There should be atleast 1 output obtained"
     image="stock-1863880_640.jpg"
     imageCaption="https://pixabay.com/photos/stock-trading-monitor-business-1863880/"
-    share={false}
-    learnMore={false}
   />
 );
 

@@ -6,6 +6,7 @@ import { drawerWidth } from './Drawer';
 import Home from '../Screens/Home';
 import Algorithms from '../Screens/Algorithms';
 import { Setpage, screens } from '../types';
+import DataStructures from '../Screens/DataStructures';
 
 interface props {
   open: boolean;
@@ -52,6 +53,7 @@ const Content: React.FC<props> = ({ open, page, setPage }) => {
       <div className={classes.drawerHeader} />
       {page === screens.Home && <Home setPage={setPage} />}
       {page === screens.Algorithms && <Algorithms />}
+      {page === screens.DataStructures && <DataStructures setPage={setPage} />}
     </main>
   );
 };

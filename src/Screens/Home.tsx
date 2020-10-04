@@ -49,11 +49,11 @@ const Home: React.FC<props> = ({ setPage }) => {
     <div>
       <div className="section group">
         <div className={toggleGrid(width)}>
-          <DataStructures />
+          <DataStructures setPage={setPage} />
         </div>
 
         <div className={toggleGrid(width)}>
-          <Algorithms setpage={setPage} />
+          <Algorithms setPage={setPage} />
         </div>
 
         <div className={toggleGrid(width)}>
