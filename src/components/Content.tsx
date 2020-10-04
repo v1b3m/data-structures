@@ -7,6 +7,7 @@ import Home from '../Screens/Home';
 import Algorithms from '../Screens/Algorithms';
 import { Setpage, screens } from '../types';
 import DataStructures from '../Screens/DataStructures';
+import Stacks from '../Screens/Stacks';
 
 interface props {
   open: boolean;
@@ -54,6 +55,7 @@ const Content: React.FC<props> = ({ open, page, setPage }) => {
       {page === screens.Home && <Home setPage={setPage} />}
       {page === screens.Algorithms && <Algorithms />}
       {page === screens.DataStructures && <DataStructures setPage={setPage} />}
+      {page === screens.Stacks && <Stacks />}
     </main>
   );
 };

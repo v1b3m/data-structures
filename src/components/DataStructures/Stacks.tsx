@@ -1,8 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { screens, Setpage } from '../../types';
 import Card from '../Card';
 
-const Stacks = () => (
+interface props {
+  setPage: Setpage;
+}
+
+const Stacks: React.FC<props> = ({ setPage }) => (
   <Card
     title="Stacks"
     caption=""
@@ -11,6 +16,7 @@ const Stacks = () => (
     imageCaption="https://pixabay.com/photos/beach-rocks-balance-blue-coastline-15712/"
     moreInfo
     moreInfoText="GO TO IMPLEMENTATION"
+    onClickMoreInfo={() => setPage(screens.Stacks)}
   />
 );
 

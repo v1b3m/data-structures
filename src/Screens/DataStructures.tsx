@@ -76,7 +76,7 @@ const DataStructures: React.FC<props> = ({ setPage }) => {
         </div>
 
         <div className={toggleGrid(width)}>
-          <Stacks />
+          <Stacks setPage={setPage} />
         </div>
 
         <div className={toggleQueues(QueueIDs.one, width)}>
