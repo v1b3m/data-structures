@@ -1,5 +1,6 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-shadow
+
 export enum screens {
   Home = 'Home',
   Algorithms = 'Algorithms',
@@ -11,3 +12,9 @@ export enum screens {
 }
 
 export type Setpage = (page: screens) => void;
+
+export enum drawerType {
+  permanent = 'permanent',
+  persistent = 'persistent',
+  temporary = 'temporary',
+}
