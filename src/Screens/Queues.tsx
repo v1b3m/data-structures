@@ -17,7 +17,7 @@ const Queues: React.FC<props> = ({ setPage }) => (
     </div>
 
     <div className="col span_1_of_2">
-      <Circular />
+      <Circular setPage={setPage} />
     </div>
   </div>
 );

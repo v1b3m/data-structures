@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable radix */
 /* eslint-disable react/self-closing-comp */
@@ -12,45 +13,87 @@ import '../styles/Grid.css';
 
 import Button from '../components/Stacks/Button';
 
-class Queue {
+class CircularQueue {
   queue: number[];
 
-  constructor() {
+  arr: number[];
+
+  maxLen: number;
+
+  head: number;
+
+  tail: number;
+
+  constructor(length: number) {
     this.queue = [];
+    this.arr = [];
+    this.maxLen = length;
+    this.head = 0;
+    this.tail = 0;
   }
 
   enqueue(element: number) {
-    return this.queue.push(element);
+    if (this.head === this.tail) {
+      if (this.queue[this.head] === undefined) {
+        this.queue[this.head] = element;
+      } else {
+        this.queue[this.tail + 1] = element;
+        this.tail += 1;
+      }
+    } else if (this.head !== this.tail) {
+      const nextIndex = (this.tail + 1) % this.maxLen;
+      if (this.queue[nextIndex] === undefined) {
+        this.queue[nextIndex] = element;
+        this.tail = nextIndex;
+      } else {
+        return 'Queue is full.';
+      }
+    }
   }
 
   dequeue() {
-    return this.queue.shift();
-  }
-
-  tailElement() {
-    return this.queue[this.queue.length - 1];
-  }
-
-  size() {
-    return this.queue.length;
+    if (this.queue[this.head] !== undefined) {
+      const oldIndex = this.head;
+      this.queue.splice(this.head, 1);
+      this.head = (oldIndex + 1) % this.maxLen;
+    } else {
+      return 'Nothing to remove !!!';
+    }
   }
 
   allElements() {
-    return this.queue;
+    this.arr.splice(0, this.arr.length);
+    for (let i = 0; i < this.queue.length; i += 1) {
+      if (this.queue[i] !== undefined) {
+        this.arr.push(this.queue[i]);
+      }
+    }
+    return this.arr;
+  }
+
+  len() {
+    return this.arr.length;
   }
 }
 
-let queue: Queue = new Queue();
+let queue: CircularQueue = new CircularQueue(1);
 
 const Linear = () => {
   const [queueValue, setQueueValue] = useState<number>();
   const [topMost, setTopMost] = useState<number>();
   const [length, setLength] = useState<number>();
+  const [maxLength, setMaxLength] = useState<number>();
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setQueueValue(parseInt(event.target.value));
+  };
+
+  const handleChangeMaxLength = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setMaxLength(parseInt(event.target.value));
   };
 
   const handleEnqueue = () => {
@@ -70,7 +113,9 @@ const Linear = () => {
   };
 
   const handlelength = () => {
-    setLength(queue.size());
+    if (queue) {
+      setLength(queue.len());
+    }
   };
 
   const handleAllElements = () => {
@@ -81,8 +126,8 @@ const Linear = () => {
     $('#demo').text(() => `[${queue.allElements().toString()}]`);
   };
 
-  const handleCreateQueue = () => {
-    queue = new Queue();
+  const handleCreateQueue = (num: number) => {
+    queue = new CircularQueue(num);
     return updateQueueView();
   };
 
@@ -100,7 +145,23 @@ const Linear = () => {
           </div>
 
           <div className="control-item">
-            <Button text="Create Queue" onClick={handleCreateQueue} />
+            <TextField
+              id="filled-number"
+              label="Number"
+              type="number"
+              variant="outlined"
+              color="primary"
+              size="small"
+              onChange={handleChangeMaxLength}
+            />
+            <Button
+              text="Create Queue"
+              onClick={() => {
+                if (maxLength) {
+                  handleCreateQueue(maxLength);
+                }
+              }}
+            />
           </div>
 
           <div className="push control-item">
@@ -146,7 +207,7 @@ const Linear = () => {
         <Typography variant="h5" color="textSecondary">
           Code
         </Typography>
-        <ReactEmbedGist gist="KengoWada/21e3e6ff1581ac9bd57f573cd4b12c23" />
+        <ReactEmbedGist gist="KengoWada/57cb8fc08c4b3553c3b3c4ba0ed2f8ce" />
       </div>
     </div>
   );

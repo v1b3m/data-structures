@@ -1,7 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import { screens, Setpage } from '../../types';
 import Card from '../Card';
 
-const Circular = () => (
+interface props {
+  setPage: Setpage;
+}
+
+const Circular: React.FC<props> = ({ setPage }) => (
   <div>
     <Card
       title="Circular Queue"
@@ -11,6 +17,7 @@ const Circular = () => (
       imageCaption="https://pixabay.com/photos/ferris-wheel-amusement-park-ride-2575709/"
       moreInfo
       moreInfoText="GO TO IMPLEMENTATION"
+      onClickMoreInfo={() => setPage(screens.Circular)}
     />
   </div>
 );

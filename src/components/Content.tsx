@@ -10,6 +10,7 @@ import DataStructures from '../Screens/DataStructures';
 import Stacks from '../Screens/Stacks';
 import Queues from '../Screens/Queues';
 import Linear from '../Screens/Linear';
+import Circular from '../Screens/Circular';
 
 interface props {
   open: boolean;
@@ -60,6 +61,7 @@ const Content: React.FC<props> = ({ open, page, setPage }) => {
       {page === screens.Stacks && <Stacks />}
       {page === screens.Queues && <Queues setPage={setPage} />}
       {page === screens.Linear && <Linear />}
+      {page === screens.Circular && <Circular />}
     </main>
   );
 };
