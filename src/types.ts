@@ -5,6 +5,8 @@ export enum screens {
   Algorithms = 'Algorithms',
   DataStructures = 'DataStructures',
   Stacks = 'Stacks',
+  Queues = 'Queues',
+  Linear = 'Linear',
 }
 
 export type Setpage = (page: screens) => void;

@@ -8,6 +8,8 @@ import Algorithms from '../Screens/Algorithms';
 import { Setpage, screens } from '../types';
 import DataStructures from '../Screens/DataStructures';
 import Stacks from '../Screens/Stacks';
+import Queues from '../Screens/Queues';
+import Linear from '../Screens/Linear';
 
 interface props {
   open: boolean;
@@ -56,6 +58,8 @@ const Content: React.FC<props> = ({ open, page, setPage }) => {
       {page === screens.Algorithms && <Algorithms />}
       {page === screens.DataStructures && <DataStructures setPage={setPage} />}
       {page === screens.Stacks && <Stacks />}
+      {page === screens.Queues && <Queues setPage={setPage} />}
+      {page === screens.Linear && <Linear />}
     </main>
   );
 };

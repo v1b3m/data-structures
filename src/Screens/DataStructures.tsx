@@ -80,7 +80,7 @@ const DataStructures: React.FC<props> = ({ setPage }) => {
         </div>
 
         <div className={toggleQueues(QueueIDs.one, width)}>
-          <Queues />
+          <Queues setPage={setPage} />
         </div>
       </div>
       <div className="section group">
@@ -93,7 +93,7 @@ const DataStructures: React.FC<props> = ({ setPage }) => {
         </div>
 
         <div className={toggleQueues(QueueIDs.two, width)}>
-          <Queues />
+          <Queues setPage={setPage} />
         </div>
       </div>
     </div>
