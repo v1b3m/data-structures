@@ -1,8 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { screens, Setpage } from '../../types';
 import Card from '../Card';
 
-const Queues = () => (
+interface props {
+  setPage: Setpage;
+}
+
+const Queues: React.FC<props> = ({ setPage }) => (
   <Card
     title="Queues"
     caption=""
@@ -11,6 +16,7 @@ const Queues = () => (
     imageCaption="https://pixabay.com/photos/bunny-business-businessmen-career-3830669/"
     moreInfo
     moreInfoText="GO TO IMPLEMENTATION"
+    onClickMoreInfo={() => setPage(screens.Queues)}
   />
 );
 
